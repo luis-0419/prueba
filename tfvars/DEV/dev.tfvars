@@ -1,0 +1,9 @@
+resource_group_name     = "a2dev-test"
+location                = "east us"
+environment_name        = "DEV"
+virtual_network_name    = "a2dev_vnet"
+snet_vm_name            = "a2dev-vm-test-snet"
+snet_vm_address_prefix  = "192.168.1.0/24"
+agent_count             = 2
+linux_vm_name           = "a2dev-vm-test"
+username                = "admin"
