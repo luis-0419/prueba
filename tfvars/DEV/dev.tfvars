@@ -7,3 +7,6 @@ snet_vm_address_prefix  = "192.168.1.0/24"
 agent_count             = 2
 linux_vm_name           = "a2dev-vm-test"
 username                = "admin"
+password                = "admin"
+size                    = "Standard_DS1_v2"
+storage_account_type    = "Standard_LRS"
