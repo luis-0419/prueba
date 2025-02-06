@@ -1,0 +1,52 @@
+---
+- name: Uninstall Docker
+  hosts: all
+  become: yes
+  tasks:
+    - name: Remove Docker package
+      apt:
+        name: "{{ item }}"
+        state: absent
+      loop:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+      when: ansible_os_family == 'Debian'
+
+    - name: Stop Docker service
+      systemd:
+        name: docker
+        state: stopped
+        enabled: no
+      when: ansible_os_family == 'Debian'
+
+    - name: Remove Docker group
+      group:
+        name: docker
+        state: absent
+      when: ansible_os_family == 'Debian'
+
+    - name: Remove Docker dependencies
+      apt:
+        name: "{{ item }}"
+        state: absent
+      loop:
+        - docker-compose
+        - docker-ce
+        - containerd.io
+        - docker-ce-cli
+      when: ansible_os_family == 'Debian'
+
+    - name: Remove Docker-related directories
+      file:
+        path: "{{ item }}"
+        state: absent
+        recurse: yes
+      loop:
+        - /var/lib/docker
+        - /var/run/docker
+        - /etc/docker
+        - /var/lib/containerd
+        - /etc/systemd/system/docker.service.d
+        - /etc/systemd/system/multi-user.target.wants/docker.service
+      when: ansible_os_family == 'Debian'
