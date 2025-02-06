@@ -18,10 +18,6 @@ variable "size" {
   type = string
 }
 
-variable "admin_username" {
-  type = string
-}
-
 variable "password" {
   type = string
 }
@@ -30,9 +26,9 @@ variable "storage_account_type" {
   type = string
 }
 
-variable "agent_count" {
-  type = number
-  default = 2
-}
+# variable "agent_count" {
+#   type = number
+#   default = 0
+# }
 
 

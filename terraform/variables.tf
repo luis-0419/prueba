@@ -23,9 +23,9 @@ variable "snet_vm_name" {
 #   default = ["192.168.10.0/24"]
 # }
 
-variable "agent_count" {
-  type = number
-}
+# variable "agent_count" {
+#   type = number
+# }
 
 variable "linux_vm_name" {
   type = string
@@ -41,9 +41,13 @@ variable "username" {
 
 variable "password" {
   type = string
-  default = "admin"
 }
 
 variable "storage_account_type" {
   type = string
+}
+
+variable "snet_bastion_name" {
+  type = string
+  default = "AzureBastionSubnet"
 }

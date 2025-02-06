@@ -11,12 +11,14 @@ resource "azurerm_network_interface" "network_interface" {
 }
 
 resource "azurerm_linux_virtual_machine" "virtual_machine" {
-  count               = var.agent_count
-  name                = var.name
+#  count               = var.agent_count
+  name                = "${var.name}"
   resource_group_name = var.resource_group_name
   location            = var.location
   size                = var.size
-  admin_username      = var.admin_username 
+  admin_username      = "luism1019"
+  admin_password      = "lmontero@01"
+  disable_password_authentication = false
   network_interface_ids = [
     azurerm_network_interface.network_interface.id,
   ]
